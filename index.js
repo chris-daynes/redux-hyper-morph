@@ -1,6 +1,6 @@
 var redux = require('redux')
 var h = require('hyperscript')
-var morphdom = require('morphdom')
+var morph = require('morphdom')
 
 var reducer = require('./reducer')
 var productsTemplate = require('./views/products')
@@ -23,16 +23,16 @@ var initialState = {
 
 var store = redux.createStore(reducer, initialState)
 
-
 store.subscribe(function () {
   var state = store.getState()
   var view = render(state, store.dispatch)
-  morphdom(app, view)
+  morph(app, view)
 })
 
-store.dispatch({type: 'INIT'}) //triggers an initial render
+store.dispatch({type: 'INIT'})
 
-function render (state, dispatch) {
-  return h('div#app', {}, productsTemplate(state, dispatch)
-  )
+function render(state, dispatch) {
+  return h('div', {}, [
+    productsTemplate(state, dispatch)
+  ])
 }
