@@ -23,13 +23,15 @@ var initialState = {
 
 var store = redux.createStore(reducer, initialState)
 
+const {dispatch, getState, subscribe} = store
+
 store.subscribe(function () {
-  var state = store.getState()
-  var view = render(state, store.dispatch)
+  var state = getState()
+  var view = render(state, dispatch)
   morph(app, view)
 })
 
-store.dispatch({type: 'INIT'})
+dispatch({type: 'INIT'})
 
 function render(state, dispatch) {
   return h('div', {}, [
