@@ -17,7 +17,7 @@ var initialState = {
     {id: 3, name: 'Kingdom of fear', price: 34.33, details: 'Song of the sausage creature'}
   ],
   cart: {
-    1: 2 // There are two items with id 1 in the cart
+     // There are two items with id 1 in the cart
   }
 }
 
@@ -35,6 +35,7 @@ dispatch({type: 'INIT'})
 
 function render(state, dispatch) {
   return h('div', {}, [
-    productsTemplate(state, dispatch)
+    productsTemplate(state, dispatch),
+    cartTemplate(state, dispatch)
   ])
 }
