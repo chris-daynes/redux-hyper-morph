@@ -25,7 +25,7 @@ var store = redux.createStore(reducer, initialState)
 
 const {dispatch, getState, subscribe} = store
 
-store.subscribe(function () {
+subscribe(function () {
   var state = getState()
   var view = render(state, dispatch)
   morph(app, view)
